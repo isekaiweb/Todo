@@ -13,4 +13,4 @@ fun String.toMillis(pattern: String = DEFAULT_PATTERN): Long {
     return SimpleDateFormat(pattern, Locale.getDefault()).parse(this)?.time ?: 0
 }
 
-const val DEFAULT_PATTERN = "dd MMM yyyy, HH:MM"
+const val DEFAULT_PATTERN = "dd MMM yyyy"

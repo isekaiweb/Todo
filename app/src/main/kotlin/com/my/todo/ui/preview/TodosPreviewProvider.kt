@@ -11,14 +11,14 @@ class TodosPreviewProvider : PreviewParameterProvider<List<Todo>> {
                     id = 1,
                     title = "Work out",
                     state = false,
-                    dueDate = "27 Mei 2023, 11:39",
+                    dueDate = "27 Mei 2023",
                     description = "Need to Workout"
                 ),
                 Todo(
                     id = 2,
                     title = "Create Project",
                     state = true,
-                    dueDate = "28 Mei 2023, 10:23",
+                    dueDate = "28 Mei 2023",
                     description = "Project for porto folio"
                 )
             )
