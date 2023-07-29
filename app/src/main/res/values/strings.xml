@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">Todo</string>
+    <string name="app_name">My Todo</string>
+
+
+    <string name="title_deleted_todo">Deleting Todo ⚠️</string>
+    <string name="desc_deleted_todo">Are you sure want to delete this todo ?</string>
+
+    <string name="title_update_todo">Updating Todo</string>
+    <string name="title_add_todo">Adding Todo</string>
+
+    <string name="title_date_picker_due_date">Select your todo Due date</string>
+    <string name="title_label">Title</string>
+    <string name="description_label">Description</string>
+    <string name="due_date_label">Due date</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="done">Done</string>
+    <string name="reset">Reset</string>
+    <string name="delete">Delete</string>
+
+    <string name="desc_fab_add_todo">fab_todo</string>
+
 </resources>
