@@ -1,6 +1,7 @@
 package com.my.todo.feature.component.dialog
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DateRange
@@ -54,7 +55,7 @@ fun DialogUpsert(
     val isValid = currentTodo.title.isNotEmpty() && currentTodo.description.isNotEmpty()
 
     Dialog(onDismissRequest = onDismiss) {
-        Card {
+        Card(modifier = Modifier.imePadding()) {
             Text(
                 text = stringResource(id = R.string.title_update_todo.takeIf { initialTodo.id != -1 }
                     ?: R.string.title_add_todo),
@@ -93,10 +94,12 @@ fun DialogUpsert(
             Button(
                 onClick = { onConfirm(currentTodo) },
                 shape = MaterialTheme.shapes.small,
-                modifier = Modifier.padding(
-                    top = 24.dp,
-                    start = 16.dp, end = 16.dp, bottom = 4.dp
-                ).fillMaxWidth(),
+                modifier = Modifier
+                    .padding(
+                        top = 24.dp,
+                        start = 16.dp, end = 16.dp, bottom = 4.dp
+                    )
+                    .fillMaxWidth(),
                 enabled = isValid
             ) {
                 Text(text = stringResource(id = R.string.save))
@@ -104,9 +107,11 @@ fun DialogUpsert(
             OutlinedButton(
                 onClick = onDismiss,
                 shape = MaterialTheme.shapes.small,
-                modifier = Modifier.padding(
-                    start = 16.dp, end = 16.dp, bottom = 16.dp
-                ).fillMaxWidth()
+                modifier = Modifier
+                    .padding(
+                        start = 16.dp, end = 16.dp, bottom = 16.dp
+                    )
+                    .fillMaxWidth()
             ) {
                 Text(text = stringResource(id = R.string.cancel))
             }
