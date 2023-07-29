@@ -63,7 +63,7 @@ fun TodoScreen(
         val (topBar, content, fab) = createRefs()
         CenterAlignedTopAppBar(title = {
             Text(
-                text = "My Todo",
+                text = stringResource(id = R.string.app_name),
                 style = MaterialTheme.typography.titleLarge
             )
         }, modifier = Modifier.constrainAs(topBar) {
