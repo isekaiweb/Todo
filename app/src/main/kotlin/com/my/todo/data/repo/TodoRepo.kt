@@ -5,7 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface TodoRepo {
     fun getTodos(): Flow<List<Todo>>
-    fun getTodo(id:Int): Flow<Todo>
     suspend fun insertTodo(
         description: String,
         title: String,

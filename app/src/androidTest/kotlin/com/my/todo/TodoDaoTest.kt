@@ -58,8 +58,8 @@ class TodoDaoTest {
         dao.deleteTodo(todo.id)
 
         assertEquals(
-            null,
-            dao.getTodo(1).first()
+            emptyList(),
+            dao.getTodos().first()
         )
     }
 
@@ -71,7 +71,7 @@ class TodoDaoTest {
 
         assertEquals(
             "564",
-            dao.getTodo(1).first()?.title
+            dao.getTodos().first()[0].title
         )
 
     }

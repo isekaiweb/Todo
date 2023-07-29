@@ -4,17 +4,16 @@ import com.my.todo.data.repo.TodoRepo
 import com.my.todo.model.data.Todo
 import com.my.todo.util.toDateString
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.MutableStateFlow
 
 /**
  * Test double for [TodoRepo]
  **/
 class TestDefaultTodoRepo : TodoRepo {
 
-    private val todos = mutableListOf<Todo>()
-    override fun getTodos(): Flow<List<Todo>> = flowOf(todos)
+    private val todos = MutableStateFlow(emptyList<Todo>())
+    override fun getTodos(): Flow<List<Todo>> = todos
 
-    override fun getTodo(id: Int): Flow<Todo> = flowOf(todos.first { it.id == id })
 
     override suspend fun insertTodo(description: String, title: String, dueDate: Long) {
         val todo = Todo(
@@ -23,11 +22,11 @@ class TestDefaultTodoRepo : TodoRepo {
             dueDate = dueDate.toDateString(),
             title = title
         )
-        todos.add(todo)
+        todos.emit(todos.value.plus(todo))
     }
 
     override suspend fun updateTodo(value: Todo) {
-        todos.map { todo ->
+        todos.emit(todos.value.map { todo ->
             if (todo.id == value.id) {
                 todo.copy(
                     title = value.title,
@@ -35,12 +34,11 @@ class TestDefaultTodoRepo : TodoRepo {
                     description = value.description
                 )
             } else todo
-        }
+        })
     }
 
     override suspend fun delete(id: Int) {
-        val todo = todos.find { it.id == id }
-        todos.remove(todo)
+        todos.emit(todos.value.filter { it.id != id })
     }
 
 }

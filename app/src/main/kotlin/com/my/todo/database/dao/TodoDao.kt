@@ -20,8 +20,6 @@ interface TodoDao {
     suspend fun insertOrReplaceTodo(todo: TodoEntity)
 
 
-    @Query(value = "SELECT * FROM todo WHERE id =:id")
-    fun getTodo(id: Int): Flow<TodoEntity?>
 
     @Insert
     fun insertAll(vararg todo: TodoEntity)
