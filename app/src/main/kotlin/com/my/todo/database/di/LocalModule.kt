@@ -20,16 +20,19 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 import java.util.concurrent.Executors
+import javax.inject.Provider
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object LocalModule {
 
+
     @Provides
     @Singleton
     fun providesTodoDatabase(
         @ApplicationContext context: Context,
+        providerTodoDao: Provider<TodoDao>
     ): TodoDatabase = Room.databaseBuilder(
         context = context,
         klass = TodoDatabase::class.java,
@@ -38,7 +41,7 @@ object LocalModule {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
             Executors.newSingleThreadExecutor().execute {
-                fillWithStartingData(context, (db as TodoDatabase).todoDao())
+                fillWithStartingData(context, providerTodoDao.get())
             }
         }
     }).build()
