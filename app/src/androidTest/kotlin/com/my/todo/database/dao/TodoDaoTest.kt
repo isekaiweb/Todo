@@ -1,10 +1,9 @@
-package com.my.todo
+package com.my.todo.database.dao
 
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.my.todo.database.TodoDatabase
-import com.my.todo.database.dao.TodoDao
 import com.my.todo.database.model.TodoEntity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
