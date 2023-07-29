@@ -50,4 +50,8 @@ class DefaultTodoRepo @Inject constructor(
         )
         dao.insertOrReplaceTodo(entity)
     }
+
+    override suspend fun delete(id: Int) {
+        dao.deleteTodo(id)
+    }
 }

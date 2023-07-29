@@ -11,5 +11,8 @@ interface TodoRepo {
         title: String,
         dueDate: Long,
     )
+
     suspend fun updateTodo(value: Todo)
+
+    suspend fun delete(id: Int)
 }
