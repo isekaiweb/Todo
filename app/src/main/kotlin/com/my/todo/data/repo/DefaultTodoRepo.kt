@@ -31,7 +31,8 @@ class DefaultTodoRepo @Inject constructor(
             id = value.id,
             dueDate = value.dueDate.toMillis(),
             title = value.title,
-            description = value.description
+            description = value.description,
+            state = value.state
         )
         dao.insertOrReplaceTodo(entity)
     }
