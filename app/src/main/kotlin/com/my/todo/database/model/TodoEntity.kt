@@ -2,6 +2,8 @@ package com.my.todo.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.my.todo.model.data.Todo
+import com.my.todo.util.toDateString
 
 /**
  * Defines an database entity that stored todos
@@ -15,4 +17,11 @@ data class TodoEntity(
     val title: String,
     val description: String,
     val dueDate: Long
+)
+
+fun TodoEntity.asExternalModel() = Todo(
+    id = id,
+    title = title,
+    description = description,
+    dueDate = dueDate.toDateString()
 )
