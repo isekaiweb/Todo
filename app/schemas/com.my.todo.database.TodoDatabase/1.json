@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "5f7904f56d520bca85a8ef161d939393",
+    "identityHash": "9776fe55c5628e2c4f211cab599a5b3b",
     "entities": [
       {
         "tableName": "todo",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `dueDate` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `dueDate` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -29,7 +29,7 @@
           {
             "fieldPath": "dueDate",
             "columnName": "dueDate",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": true
           }
         ],
@@ -46,7 +46,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5f7904f56d520bca85a8ef161d939393')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9776fe55c5628e2c4f211cab599a5b3b')"
     ]
   }
 }

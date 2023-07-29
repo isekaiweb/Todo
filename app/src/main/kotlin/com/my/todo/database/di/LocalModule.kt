@@ -55,7 +55,7 @@ object LocalModule {
                             id = item.getInt("id"),
                             title = item.getString("title"),
                             description = item.getString("description"),
-                            dueDate = item.getString("dueDate")
+                            dueDate = System.currentTimeMillis().plus(item.getLong("dueDate"))
                         )
                     )
                 }

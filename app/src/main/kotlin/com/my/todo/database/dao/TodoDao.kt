@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TodoDao {
 
-    @Query(value = "SELECT * FROM todo ORDER BY strftime('%Y %m %d %H:%M', dueDate) DESC")
+    @Query(value = "SELECT * FROM todo ORDER BY dueDate Desc")
     fun getTodos(): Flow<List<TodoEntity>>
 
     @Upsert
