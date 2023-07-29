@@ -10,6 +10,7 @@ kotlinxCoroutines = "1.6.4"
 androidxEspresso = "3.5.1"
 ksp = "1.8.22-1.0.11"
 androidxHiltNavigationCompose = "1.0.0"
+androidxComposeConstraintLayout ="1.0.1"
 espresso-core = "3.5.1"
 androidxTestCore = "1.5.0"
 androidxTestExt = "1.1.5"
@@ -33,6 +34,7 @@ activity-compose = { group = "androidx.activity", name = "activity-compose", ver
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
 ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-constraint-layout = { group ="androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "androidxComposeConstraintLayout" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
