@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey
 )
 data class TodoEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int = 1,
     val title: String,
     val description: String,
     val dueDate: Long
