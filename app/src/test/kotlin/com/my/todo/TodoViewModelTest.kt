@@ -53,7 +53,7 @@ class TodoViewModelTest {
         viewModel.updateTodo(todo = viewModel.todos.value[0].copy(title = "Tester Description"))
         assertEquals(repo.getTodos().first()[0].description ,viewModel.todos.value[0].description)
 
-        viewModel.deleteTodo(todo = viewModel.todos.value[0])
+        viewModel.deleteTodo(id = viewModel.todos.value[0].id)
         assertTrue(viewModel.todos.value.isEmpty())
 
         collectJob.cancel()
