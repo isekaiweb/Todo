@@ -66,13 +66,32 @@ class TodoDaoTest {
     fun should_updated_the_given_todo() = runTest {
         val todo = testTodo(id = 1, dueDate = 4)
         dao.insertOrReplaceTodo(todo)
-        dao.insertOrReplaceTodo(todo.copy(title = "564"))
 
-        assertEquals(
-            "564",
-            dao.getTodos().first()[0].title
+        dao.insertOrReplaceTodo(
+            todo.copy(
+                title = "title",
+                state = true,
+                description = "description",
+                dueDate = 6
+            )
         )
 
+        assertEquals(
+            "title",
+            dao.getTodos().first()[0].title
+        )
+        assertEquals(
+            "description",
+            dao.getTodos().first()[0].description
+        )
+        assertEquals(
+            true,
+            dao.getTodos().first()[0].state
+        )
+        assertEquals(
+            6,
+            dao.getTodos().first()[0].dueDate
+        )
     }
 }
 
