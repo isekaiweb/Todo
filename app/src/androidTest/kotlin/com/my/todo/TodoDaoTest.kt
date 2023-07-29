@@ -55,7 +55,7 @@ class TodoDaoTest {
     fun should_deleted_the_given_todo() = runTest {
         val todo = testTodo(id = 1, dueDate = 4)
         dao.insertOrReplaceTodo(todo)
-        dao.deleteTodo(todo)
+        dao.deleteTodo(todo.id)
 
         assertEquals(
             null,
