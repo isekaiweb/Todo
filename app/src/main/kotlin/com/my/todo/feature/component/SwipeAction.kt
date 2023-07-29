@@ -1,5 +1,6 @@
 package com.my.todo.feature.component
 
+import androidx.annotation.VisibleForTesting
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -29,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
@@ -69,6 +71,7 @@ fun SwipeAction(
         val (container, actionEnd, actionStart) = createRefs()
         Box(
             modifier = Modifier
+                .testTag(TEST_TAG_START_COMPONENT)
                 .zIndex(2f.takeIf { offsetX == thresholdPx } ?: 0f)
                 .constrainAs(actionStart) {
                     start.linkTo(container.start)
@@ -91,6 +94,7 @@ fun SwipeAction(
         }
         Box(
             modifier = Modifier
+                .testTag(TEST_TAG_END_COMPONENT)
                 .zIndex(2f.takeIf { offsetX == -thresholdPx } ?: 0f)
                 .constrainAs(actionEnd) {
                     end.linkTo(container.end)
@@ -203,3 +207,8 @@ private fun SwipeActionPreview() {
     }
 }
 
+@VisibleForTesting
+const val TEST_TAG_START_COMPONENT = "start component"
+
+@VisibleForTesting
+const val TEST_TAG_END_COMPONENT = "end component"
