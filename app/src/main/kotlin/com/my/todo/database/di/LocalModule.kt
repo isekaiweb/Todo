@@ -30,7 +30,6 @@ object LocalModule {
     @Singleton
     fun providesTodoDatabase(
         @ApplicationContext context: Context,
-        todoDao: TodoDao
     ): TodoDatabase = Room.databaseBuilder(
         context = context,
         klass = TodoDatabase::class.java,
@@ -39,7 +38,7 @@ object LocalModule {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
             Executors.newSingleThreadExecutor().execute {
-                fillWithStartingData(context, todoDao)
+                fillWithStartingData(context, (db as TodoDatabase).todoDao())
             }
         }
     }).build()
