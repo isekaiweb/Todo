@@ -73,6 +73,9 @@ dependencies {
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
 
+    androidTestImplementation(kotlin("test"))
+    testImplementation(kotlin("test"))
+
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.ui.test.junit4)
