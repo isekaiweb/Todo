@@ -18,7 +18,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -32,6 +34,7 @@ import com.my.todo.feature.component.dialog.DialogDeleting
 import com.my.todo.feature.component.dialog.DialogUpsert
 import com.my.todo.model.data.Todo
 import com.my.todo.ui.preview.TodosPreviewProvider
+import com.my.todo.util.toDateString
 import com.my.todo.util.toMillis
 
 @Composable
@@ -48,7 +51,7 @@ fun TodoRoute(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun TodoScreen(
     todos: List<Todo>,
@@ -56,6 +59,7 @@ fun TodoScreen(
     onAdd: (title: String, description: String, dueDate: Long) -> Unit = { _, _, _ -> },
     onDelete: (id: Int) -> Unit = {},
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
     val (onDeletingTodo, setOnDeletingTodo) = remember { mutableStateOf<Int?>(null) }
     val (onUpsertTodo, setOnUpsertTodo) = remember { mutableStateOf<Todo?>(null) }
 
@@ -124,6 +128,7 @@ fun TodoScreen(
                     onAdd(todo.title, todo.description, todo.dueDate.toMillis())
                 } else onUpdate(todo)
 
+                keyboardController?.hide()
                 setOnUpsertTodo(null)
             }
         )
@@ -144,5 +149,5 @@ private fun emptyTodo() = Todo(
     id = -1,
     description = "",
     title = "",
-    dueDate = ""
+    dueDate = System.currentTimeMillis().toDateString()
 )
