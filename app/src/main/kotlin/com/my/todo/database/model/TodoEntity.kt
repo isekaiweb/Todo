@@ -16,12 +16,14 @@ data class TodoEntity(
     val id: Int = 1,
     val title: String,
     val description: String,
-    val dueDate: Long
+    val dueDate: Long,
+    val state: Boolean = false,
 )
 
 fun TodoEntity.asExternalModel() = Todo(
     id = id,
     title = title,
     description = description,
-    dueDate = dueDate.toDateString()
+    dueDate = dueDate.toDateString(),
+    state = state
 )

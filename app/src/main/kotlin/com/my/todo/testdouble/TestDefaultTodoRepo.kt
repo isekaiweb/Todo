@@ -20,7 +20,7 @@ class TestDefaultTodoRepo : TodoRepo {
             id = System.currentTimeMillis().toInt(),
             description = description,
             dueDate = dueDate.toDateString(),
-            title = title
+            title = title,
         )
         todos.emit(todos.value.plus(todo))
     }

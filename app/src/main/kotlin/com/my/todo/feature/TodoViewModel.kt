@@ -25,8 +25,8 @@ class TodoViewModel @Inject constructor(
         viewModelScope.launch { repo.updateTodo(todo) }
     }
 
-    fun deleteTodo(todo: Todo) {
-        viewModelScope.launch { repo.delete(todo.id) }
+    fun deleteTodo(id: Int) {
+        viewModelScope.launch { repo.delete(id) }
     }
 
     fun addTodo(

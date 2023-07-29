@@ -8,4 +8,5 @@ data class Todo(
     val title: String,
     val description: String,
     val dueDate: String,
+    val state: Boolean = false,
 )
