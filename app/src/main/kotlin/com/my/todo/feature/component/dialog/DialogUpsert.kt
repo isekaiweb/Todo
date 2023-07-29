@@ -1,5 +1,6 @@
 package com.my.todo.feature.component.dialog
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
@@ -13,7 +14,6 @@ import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.DatePickerFormatter
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -82,13 +82,12 @@ fun DialogUpsert(
                 labelId = R.string.due_date_label,
                 value = currentTodo.dueDate,
                 trailingIcon = {
-                    IconButton(onClick = { shouldShowDatePicker = true }) {
-                        Icon(
-                            imageVector = Icons.Rounded.DateRange,
-                            contentDescription = "Date Icon"
-                        )
-                    }
-                }, modifier = Modifier.padding(start = 16.dp, end = 16.dp)
+                    Icon(
+                        imageVector = Icons.Rounded.DateRange,
+                        contentDescription = "Date Icon"
+                    )
+                }, modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+                modifierTextField = Modifier.clickable { shouldShowDatePicker = true }
             )
 
             Button(
@@ -119,7 +118,7 @@ fun DialogUpsert(
     }
 
     if (shouldShowDatePicker) {
-        val initialSelectedDateMillis = initialTodo.dueDate.toMillis()
+        val initialSelectedDateMillis = currentTodo.dueDate.toMillis()
 
         val datePickerState = rememberDatePickerState(
             initialSelectedDateMillis = initialSelectedDateMillis,
