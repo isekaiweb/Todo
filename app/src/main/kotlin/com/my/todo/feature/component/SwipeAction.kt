@@ -84,7 +84,7 @@ fun SwipeAction(
                 .background(color = startBackgroundColor)
                 .fillMaxHeight()
                 .width(threshold)
-                .clickable { startAction() },
+                .clickable { startAction();setOffsetX(0f) },
             contentAlignment = Alignment.Center
         ) {
             Icon(
@@ -106,7 +106,7 @@ fun SwipeAction(
                 .background(color = endBackgroundColor)
                 .fillMaxHeight()
                 .width(threshold)
-                .clickable { endAction() },
+                .clickable { endAction();setOffsetX(0f) },
             contentAlignment = Alignment.Center
         ) {
             Icon(
