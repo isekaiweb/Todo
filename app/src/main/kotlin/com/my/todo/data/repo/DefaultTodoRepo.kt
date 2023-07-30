@@ -21,7 +21,7 @@ class DefaultTodoRepo @Inject constructor(
         val entity = TodoEntity(
             description = description,
             title = title,
-            dueDate = dueDate
+            dueDate = dueDate,
         )
         dao.insertOrReplaceTodo(entity)
     }
