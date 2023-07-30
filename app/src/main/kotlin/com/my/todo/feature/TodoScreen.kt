@@ -86,7 +86,7 @@ fun TodoScreen(
                 height = Dimension.fillToConstraints
             },
             verticalArrangement = Arrangement.spacedBy(16.dp),
-            contentPadding = PaddingValues(horizontal = 16.dp)
+            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp)
         ) {
             items(items = todos, key = { it.id }) { todo ->
                 TodoLayout(
@@ -122,7 +122,7 @@ fun TodoScreen(
     if (onUpsertTodo != null) {
         DialogUpsert(
             initialTodo = onUpsertTodo,
-            onDismiss = { setOnUpsertTodo(null) },
+            onDismiss = { setOnUpsertTodo(null); keyboardController?.hide() },
             onConfirm = { todo ->
                 if (todo.id == -1) {
                     onAdd(todo.title, todo.description, todo.dueDate.toMillis())
