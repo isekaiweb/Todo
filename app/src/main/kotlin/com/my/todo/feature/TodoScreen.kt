@@ -86,7 +86,7 @@ fun TodoScreen(
                 height = Dimension.fillToConstraints
             },
             verticalArrangement = Arrangement.spacedBy(16.dp),
-            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp)
+            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 48.dp)
         ) {
             items(items = todos, key = { it.id }) { todo ->
                 TodoLayout(
