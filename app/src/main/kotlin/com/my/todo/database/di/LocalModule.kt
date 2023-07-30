@@ -22,6 +22,7 @@ import java.io.InputStreamReader
 import java.util.concurrent.Executors
 import javax.inject.Provider
 import javax.inject.Singleton
+import kotlin.time.Duration.Companion.days
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -57,7 +58,7 @@ object LocalModule {
                             id = item.getInt("id"),
                             title = item.getString("title"),
                             description = item.getString("description"),
-                            dueDate = System.currentTimeMillis().plus(item.getLong("dueDate"))
+                            dueDate = System.currentTimeMillis().plus(item.getInt("dueDate").days.inWholeMilliseconds)
                         )
                     )
                 }
